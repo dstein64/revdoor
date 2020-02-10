@@ -1,4 +1,8 @@
 INCLUDES = -I..
 
 all:
-	$(CXX) $(INCLUDES) test_revdoor.cpp -lboost_unit_test_framework -o test_revdoor
+	$(CXX) $(INCLUDES) \
+		test_revdoor.cpp \
+		-o test_revdoor \
+		-std=c++0x \
+		-lboost_unit_test_framework
