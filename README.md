@@ -5,8 +5,8 @@ The generators visit combinations by indicating replacements for one or two item
 on each iteration.
 
 The *combinations without replacement* generator implements Algorithm R from TAOCP
-7.2.1.3 (Knuth). The *combinations with replacement* generator implements the same
-algorithm, modified to support replacement.
+7.2.1.3 [[1]](#references). The *combinations with replacement* generator implements
+the same algorithm, modified to support replacement.
 
 ## Quick Start
  
@@ -33,3 +33,8 @@ Refer to the comments in [revdoor.hpp](revdoor.hpp) for detailed information.
 The source code has an [MIT License](https://en.wikipedia.org/wiki/MIT_License).
 
 See [revdoor.hpp](revdoor.hpp).
+
+## References
+
+[1] D Knuth, The Art of Computer Programming, Volume 4, Fascicle 3: Generating All
+Combinations and Partitions (Addison-Wesley Professional, 2005).
