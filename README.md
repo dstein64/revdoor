@@ -10,7 +10,7 @@ the same algorithm, modified to support replacement.
 
 ## Quick Start
  
-1. Include the `<revdoor.hpp>` header.
+1. Include the `revdoor.hpp` header.
 2. For combinations without replacement, initialize a generator object with
    `revdoor::combinations`. For combinations with replacement, initialize a
    generator object with `revdoor::combinations_with_replacement`.
@@ -27,9 +27,8 @@ the same algorithm, modified to support replacement.
 ### Example 1: combinations without replacement
 
 ```c++
+#include <revdoor.hpp>
 #include <vector>
-
-#include "revdoor.hpp"
 
 void process_init_state(const std::vector<int> init_state) { /* ... */ }
 void process_change(int out, int in) { /* ... */ }
@@ -51,9 +50,8 @@ int main(int argc, char* argv[]) {
 ### Example 2: combinations with replacement
 
 ```c++
+#include <revdoor.hpp>
 #include <vector>
-
-#include "revdoor.hpp"
 
 void process_init_state(const std::vector<int> init_state) { /* ... */ }
 void process_change(int out, int in) { /* ... */ }
