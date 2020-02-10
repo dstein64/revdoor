@@ -30,3 +30,9 @@
 *.exe
 *.out
 *.app
+
+# Editor and IDE
+*.swp
+
+# Taga
+tags
