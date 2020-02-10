@@ -1,13 +1,16 @@
+[![Build Status](https://travis-ci.org/dstein64/revdoor.svg?branch=master)](https://travis-ci.org/dstein64/revdoor)
+
 # revdoor
 
-`revdoor` is a single-file C++ library for visiting *revolving door* combinations.
+`revdoor` is a single-file C++ library for visiting *revolving door*
+combinations.
 
-The *combinations without replacement* generator implements Algorithm R from TAOCP
-7.2.1.3 [[1]](#references). The *combinations with replacement* generator implements
-the same algorithm, modified to support replacement.
+The *combinations without replacement* generator implements Algorithm R from
+TAOCP 7.2.1.3 [[1]](#references). The *combinations with replacement* generator
+implements the same algorithm, modified to support replacement.
 
-The algorithms visit combinations by indicating replacements for one or two items
-on each iteration.
+The algorithms visit combinations by indicating `in` and `out` swap values for
+one or two items on each iteration.
 
 ## Quick Start
  
@@ -23,7 +26,7 @@ on each iteration.
    - For combinations without replacement, this takes four `int` pointers:
      `out1`'s and `out2`'s dereferences are set to elements that are removed;
      `in1`'s and `in2`'s dereferences are set to elements that are added.
-     In cases where only a single item is replaced, `*out1 == *in1`.
+     In cases where only a single item is swapped out, `*out1 == *in1`.
 
 ### Example 1: combinations without replacement
 

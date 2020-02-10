@@ -42,7 +42,7 @@ namespace revdoor {
 /**
  * A generator for revolving door combinations without replacement. This is an
  * implementation of Algorithm R from TAOCP 7.2.1.3 (Knuth). A single item is
- * replaced on each subsequent combination visited.
+ * swapped out on each subsequent combination visited.
  */
 class combinations {
   std::vector<int> c;
@@ -132,7 +132,7 @@ R2:
 /**
  * A generator for revolving door combinations with replacement. This is an
  * implementation of Algorithm R from TAOCP 7.2.1.3 (Knuth), modified to
- * support replacement. At most two items are replaced on each subsequent
+ * support replacement. At most two items are swapped out on each subsequent
  * combination visited.
  */
 class combinations_with_replacement {
@@ -174,7 +174,7 @@ class combinations_with_replacement {
 
   /**
    * Visit the next combination. In cases where there is only a single item
-   * replaced, *out1 == *in1.
+   * swapped out, *out1 == *in1.
    *
    * @param out1's dereference is set to an element that is removed.
    * @param in1's dereference is set to an element that is added.
