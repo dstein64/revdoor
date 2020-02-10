@@ -1,7 +1,7 @@
 /**
  * @file
  * @author  Daniel Steinberg - https://www.dannyadam.com
- * @version 1.0
+ * @version 1.0.0
  *
  * @section LICENSE
  *
@@ -133,7 +133,7 @@ R2:
  * A generator for revolving door combinations with replacement. This is an
  * implementation of Algorithm R from TAOCP 7.2.1.3 (Knuth), modified to
  * support replacement. At most two items are replaced on each subsequent
- * combination generated.
+ * combination visited.
  */
 class combinations_with_replacement {
   std::vector<int> c;
@@ -173,7 +173,7 @@ class combinations_with_replacement {
   }
 
   /**
-   * Generate the next combination. In cases where there is only a single item
+   * Visit the next combination. In cases where there is only a single item
    * replaced, out1 == in1.
    *
    * @param out1 is set to an element that is removed.
@@ -181,7 +181,7 @@ class combinations_with_replacement {
    * @param out2 is set to an element that is removed.
    * @param in2 is set to an element that is added.
    * @return A boolean that is false when all combinations have already been
-   * generated.
+   * visited.
    */
   bool step(int* out1, int* in1, int* out2, int* in2) {
     *out1 = *in1 = *out2 = *in2 = c[0];
