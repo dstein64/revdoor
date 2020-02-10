@@ -29,7 +29,7 @@
  *
  * @section DESCRIPTION
  *
- * A single-file C++ revolving door combination generator library.
+ * A single-file C++ library for generating revolving door combinations.
  */
 
 #pragma once
