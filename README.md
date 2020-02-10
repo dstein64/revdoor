@@ -40,9 +40,8 @@ int main(int argc, char* argv[]) {
   revdoor::combinations combs(n, t);
   std::vector<int> init_state = combs.state();
   process_init_state(init_state);
-  while (true) {
-    int out, in;
-    if (!combs.step(&out, &in)) break;
+  int out, in;
+  while (combs.step(&out, &in)) {
     process_change(out, in);
   }
   return 0;
@@ -65,9 +64,8 @@ int main(int argc, char* argv[]) {
   revdoor::combinations_with_replacement combs_rep(n, t);
   std::vector<int> init_state = combs_rep.state();
   process_init_state(init_state);
-  while (true) {
-    int out1, in1, out2, in2;
-    if (!combs_rep.step(&out1, &in1, &out2, &in2)) break;
+  int out1, in1, out2, in2;
+  while (combs_rep.step(&out1, &in1, &out2, &in2)) {
     if (out1 != in1)
       process_change(out1, in1);
     process_change(out2, in2);
