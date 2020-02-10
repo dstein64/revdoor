@@ -1,12 +1,13 @@
 # revdoor
 
 `revdoor` is a single-file C++ library for visiting *revolving door* combinations.
-The generators visit combinations by indicating replacements for one or two items
-on each iteration.
 
 The *combinations without replacement* generator implements Algorithm R from TAOCP
 7.2.1.3 [[1]](#references). The *combinations with replacement* generator implements
 the same algorithm, modified to support replacement.
+
+The algorithms visit combinations by indicating replacements for one or two items
+on each iteration.
 
 ## Quick Start
  
