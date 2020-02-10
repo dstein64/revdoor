@@ -24,7 +24,7 @@ the same algorithm, modified to support replacement.
      to elements that are added. In cases where only a single item is replaced,
      `out1 == in1`.
 
-### Example 1 (combinations without replacement)
+### Example 1: combinations without replacement
 
 ```c++
 #include <vector>
@@ -48,7 +48,7 @@ int main(int argc, char* argv[]) {
 }
 ```
 
-### Example 2 (combinations with replacement)
+### Example 2: combinations with replacement
 
 ```c++
 #include <vector>
