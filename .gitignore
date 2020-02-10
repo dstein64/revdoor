@@ -36,3 +36,6 @@
 
 # Taga
 tags
+
+# Binaries
+tests/test_revdoor
