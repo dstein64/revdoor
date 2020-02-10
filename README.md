@@ -1,6 +1,6 @@
 # revdoor
 
-`revdoor` is a single-file C++ library for generating *revolving door* combinations.
+`revdoor` is a single-file C++ library for visiting *revolving door* combinations.
 The generators visit combinations by indicating replacements for one or two items
 on each iteration.
 

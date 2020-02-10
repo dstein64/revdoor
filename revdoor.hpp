@@ -29,7 +29,7 @@
  *
  * @section DESCRIPTION
  *
- * A single-file C++ library for generating revolving door combinations.
+ * A single-file C++ library for visiting revolving door combinations.
  */
 
 #pragma once
@@ -42,7 +42,7 @@ namespace revdoor {
 /**
  * A generator for revolving door combinations without replacement. This is an
  * implementation of Algorithm R from TAOCP 7.2.1.3 (Knuth). A single item is
- * replaced on each subsequent combination generated.
+ * replaced on each subsequent combination visited.
  */
 class combinations {
   std::vector<int> c;
@@ -82,12 +82,12 @@ class combinations {
   }
 
   /**
-   * Generate the next combination.
+   * Visit the next combination.
    *
    * @param out is set to the element that is removed.
    * @param in is set to the element that is added.
    * @return A boolean that is false when all combinations have already been
-   * generated.
+   * visited.
    */
   bool step(int* out, int* in) {
 R3:
