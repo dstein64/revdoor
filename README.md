@@ -17,13 +17,13 @@ on each iteration.
    generator object with `revdoor::combinations_with_replacement`.
 3. Use the `state()` method to get the initial state of the generator.
 4. Call the `step()` method to proceed to the next combination.
-   - For combinations without replacement, this takes two pointers: `out` is
-     set to the element that is removed, and `in` is set to the element that
-     is added.
-   - For combinations without replacement, this takes four pointers: `out1`
-     and `out2` are set to elements that are removed; `in1` and `in2` are set
-     to elements that are added. In cases where only a single item is replaced,
-     `out1 == in1`.
+   - For combinations without replacement, this takes two `int` pointers:
+     `out`'s dereference is set to the element that is removed, and `in`'s
+     dereference is set to the element that is added.
+   - For combinations without replacement, this takes four `int` pointers:
+     `out1`'s and `out2`'s dereferences are set to elements that are removed;
+     `in1`'s and `in2`'s dereferences are set to elements that are added.
+     In cases where only a single item is replaced, `*out1 == *in1`.
 
 ### Example 1: combinations without replacement
 
