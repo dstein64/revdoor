@@ -36,5 +36,5 @@ See [revdoor.hpp](revdoor.hpp).
 
 ## References
 
-[1] D Knuth, The Art of Computer Programming, Volume 4, Fascicle 3: Generating All
-Combinations and Partitions (Addison-Wesley Professional, 2005).
+[1] Donald Knuth, The Art of Computer Programming, Volume 4, Fascicle 3: Generating
+All Combinations and Partitions (Addison-Wesley Professional, 2005).
