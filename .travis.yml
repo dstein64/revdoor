@@ -1,0 +1,11 @@
+language: cpp
+addons:
+  apt:
+    packages:
+      - libboost-test-dev
+compiler:
+  - clang
+install:
+  - make --directory tests
+script:
+  - tests/test_revdoor
