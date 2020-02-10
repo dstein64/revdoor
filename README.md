@@ -24,6 +24,58 @@ the same algorithm, modified to support replacement.
      to elements that are added. In cases where only a single item is replaced,
      `out1 == in1`.
 
+### Example 1 (combinations without replacement)
+
+```c++
+#include <vector>
+
+#include "revdoor.hpp"
+
+void process_init_state(const std::vector<int> init_state) { /* ... */ }
+void process_change(int out, int in) { /* ... */ }
+
+int main(int argc, char* argv[]) {
+  int n = 5;
+  int t = 3;
+  revdoor::combinations combs(n, t);
+  std::vector<int> init_state = combs.state();
+  process_init_state(init_state);
+  while (true) {
+    int out, in;
+    if (!combs.step(&out, &in)) break;
+    process_change(out, in);
+  }
+  return 0;
+}
+```
+
+### Example 2 (combinations with replacement)
+
+```c++
+#include <vector>
+
+#include "revdoor.hpp"
+
+void process_init_state(const std::vector<int> init_state) { /* ... */ }
+void process_change(int out, int in) { /* ... */ }
+
+int main(int argc, char* argv[]) {
+  int n = 5;
+  int t = 3;
+  revdoor::combinations_with_replacement combs_rep(n, t);
+  std::vector<int> init_state = combs_rep.state();
+  process_init_state(init_state);
+  while (true) {
+    int out1, in1, out2, in2;
+    if (!combs_rep.step(&out1, &in1, &out2, &in2)) break;
+    if (out1 != in1)
+      process_change(out1, in1);
+    process_change(out2, in2);
+  }
+  return 0;
+}
+```
+
 ## Documentation
 
 Refer to the comments in [revdoor.hpp](revdoor.hpp) for detailed information.
