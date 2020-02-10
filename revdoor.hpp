@@ -84,9 +84,9 @@ class combinations {
   /**
    * Generate the next combination.
    *
-   * @param out is set to the element that's removed.
+   * @param out is set to the element that is removed.
    * @param in is set to the element that is added.
-   * @return A boolean that's false when all combinations have already been
+   * @return A boolean that is false when all combinations have already been
    * generated.
    */
   bool step(int* out, int* in) {
@@ -176,11 +176,11 @@ class combinations_with_replacement {
    * Generate the next combination. In cases where there is only a single item
    * replaced, out1 == in1.
    *
-   * @param out1 is set to an element that's removed.
+   * @param out1 is set to an element that is removed.
    * @param in1 is set to an element that is added.
-   * @param out2 is set to an element that's removed.
+   * @param out2 is set to an element that is removed.
    * @param in2 is set to an element that is added.
-   * @return A boolean that's false when all combinations have already been
+   * @return A boolean that is false when all combinations have already been
    * generated.
    */
   bool step(int* out1, int* in1, int* out2, int* in2) {
