@@ -84,8 +84,8 @@ class combinations {
   /**
    * Visit the next combination.
    *
-   * @param out is set to the element that is removed.
-   * @param in is set to the element that is added.
+   * @param out's dereference is set to the element that is removed.
+   * @param in's dereference is set to the element that is added.
    * @return A boolean that is false when all combinations have already been
    * visited.
    */
@@ -174,12 +174,12 @@ class combinations_with_replacement {
 
   /**
    * Visit the next combination. In cases where there is only a single item
-   * replaced, out1 == in1.
+   * replaced, *out1 == *in1.
    *
-   * @param out1 is set to an element that is removed.
-   * @param in1 is set to an element that is added.
-   * @param out2 is set to an element that is removed.
-   * @param in2 is set to an element that is added.
+   * @param out1's dereference is set to an element that is removed.
+   * @param in1's dereference is set to an element that is added.
+   * @param out2's dereference is set to an element that is removed.
+   * @param in2's dereference is set to an element that is added.
    * @return A boolean that is false when all combinations have already been
    * visited.
    */
