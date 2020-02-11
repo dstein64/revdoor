@@ -90,7 +90,6 @@ class combinations {
    * visited.
    */
   bool step(int* out, int* in) {
-R3:
     if (t & 1) {
       if (c[0] + 1 < c[1]) {
         *out = c[0];
@@ -185,7 +184,6 @@ class combinations_with_replacement {
    */
   bool step(int* out1, int* in1, int* out2, int* in2) {
     *out1 = *in1 = *out2 = *in2 = c[0];
-R3:
     if (t & 1) {
       if (c[0] < c[1]) {
         *out2 = c[0];
