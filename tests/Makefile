@@ -1,5 +1,6 @@
 all:
 	$(CXX) \
+		-Wall -Wextra -Wpedantic -Werror \
 		-I.. \
 		test_revdoor.cpp \
 		-o test_revdoor \
