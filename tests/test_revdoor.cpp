@@ -29,7 +29,7 @@ BOOST_AUTO_TEST_CASE(test_combinations) {
     swaps.push_back({out, in});
   }
   BOOST_REQUIRE_EQUAL(swaps.size(), expected_swaps.size());
-  for (int i = 0; i < swaps.size(); ++i) {
+  for (int i = 0; i < (int)swaps.size(); ++i) {
     BOOST_CHECK_EQUAL(swaps[i].first, expected_swaps[i].first);
     BOOST_CHECK_EQUAL(swaps[i].second, expected_swaps[i].second);
   }
@@ -75,7 +75,7 @@ BOOST_AUTO_TEST_CASE(test_combinations_with_replacement) {
     swaps.push_back(v);
   }
   BOOST_REQUIRE_EQUAL(swaps.size(), expected_swaps.size());
-  for (int i = 0; i < swaps.size(); ++i) {
+  for (int i = 0; i < (int)swaps.size(); ++i) {
     BOOST_CHECK_EQUAL_COLLECTIONS(
         swaps[i].begin(),
         swaps[i].end(),

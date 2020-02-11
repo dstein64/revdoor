@@ -46,7 +46,7 @@ namespace revdoor {
  */
 class combinations {
   std::vector<int> c;
-  int n, t, j;
+  int t, j;
 
  public:
   /**
@@ -58,7 +58,7 @@ class combinations {
    * @param n is the number of elements.
    * @param t is the length of each combination.
    */
-  combinations(int n, int t) : c(t + 1), n(n), t(t) {
+  combinations(int n, int t) : c(t + 1), t(t) {
     assert(n > t);
     assert(t > 1);
     for (j = 0; j < t; ++j) {
@@ -136,7 +136,7 @@ R2:
  */
 class combinations_with_replacement {
   std::vector<int> c;
-  int n, t, j;
+  int t, j;
 
  public:
   /**
@@ -148,13 +148,14 @@ class combinations_with_replacement {
    * @param n is the number of elements.
    * @param t is the length of each combination.
    */
-  combinations_with_replacement(int n, int t) : c(t + 1), n(n + t - 1), t(t) {
-    assert(this->n > t);
+  combinations_with_replacement(int n, int t) : c(t + 1), t(t) {
+    n += t - 1;
+    assert(n > t);
     assert(t > 1);
     for (j = 0; j < t; ++j) {
       c[j] = 0;
     }
-    c[t] = this->n - j;
+    c[t] = n - j;
   }
 
   /**
