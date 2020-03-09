@@ -1,0 +1,29 @@
+name: build
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+  schedule:
+    # Run weekly (* is a special character in YAML, so quote the string)
+    - cron:  '0 0 * * 0'
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        compiler: [g++, clang++]
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install Boost Test Library
+      run: sudo apt-get install libboost-test-dev
+    - name: Compile (${{ matrix.compiler }})
+      env:
+        CXX: ${{ matrix.compiler }}
+      run: make --directory tests
+    - name: Test
+      run: tests/test_revdoor

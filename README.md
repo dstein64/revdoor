@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/dstein64/revdoor.svg?branch=master)](https://travis-ci.org/dstein64/revdoor)
+[![Build Status](https://github.com/dstein64/revdoor/workflows/build/badge.svg)](https://github.com/dstein64/revdoor/actions)
 
 # revdoor
 
