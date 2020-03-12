@@ -17,6 +17,9 @@ jobs:
       matrix:
         os: [macos-latest, ubuntu-latest]
         compiler: [g++, clang++]
+        exclude:
+          - os: macos-latest
+            compiler: g++
 
     steps:
     - uses: actions/checkout@v2
@@ -25,10 +28,7 @@ jobs:
       run: sudo apt install libboost-test-dev
     - name: Install Dependencies (macos)
       if: matrix.os == 'macos-latest'
-      run: |
-        brew install boost
-        brew install gcc
-        echo $PATH
+      run: brew install boost
     - name: Compile (${{ matrix.compiler }})
       env:
         CXX: ${{ matrix.compiler }}
