@@ -20,9 +20,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Install Dependencies (Ubuntu)
-      if: matrix.os == 'ubuntu-latest'
-      run: sudo apt install libboost-test-dev
+    - name: Install Dependencies
+      - if: matrix.os == 'ubuntu-latest'
+        run: sudo apt install libboost-test-dev
+      - if: matrix.os == 'macos-latest'
+        run: brew install boost
     - name: Compile (${{ matrix.compiler }})
       env:
         CXX: ${{ matrix.compiler }}
