@@ -20,8 +20,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Install Boost Test Library
-      run: sudo apt-get install libboost-test-dev
+    - name: Install Dependencies (Ubuntu)
+      if: matrix.os == ubuntu-latest
+      run: sudo apt install libboost-test-dev
     - name: Compile (${{ matrix.compiler }})
       env:
         CXX: ${{ matrix.compiler }}
