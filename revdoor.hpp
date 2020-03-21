@@ -46,7 +46,7 @@ namespace revdoor {
  */
 class combinations {
   std::vector<int> c;
-  int t, j;
+  int t, n;
 
  public:
   /**
@@ -58,10 +58,10 @@ class combinations {
    * @param n is the number of elements.
    * @param t is the length of each combination.
    */
-  combinations(int n, int t) : c(t + 1), t(t) {
+  combinations(int n, int t) : c(t + 1), t(t), n(n) {
     assert(n > t);
     assert(t > 1);
-    for (j = 0; j < t; ++j) {
+    for (int j = 0; j < t; ++j) {
       c[j] = j;
     }
     c[t] = n;
@@ -82,6 +82,23 @@ class combinations {
   }
 
   /**
+   * Set the current combination state.
+   *
+   * @param state is a combination state.
+   */
+  void set_state(const std::vector<int>& state) {
+    assert((int)state.size() == t);
+    std::vector<bool> present(t, false);
+    for (int i = 0; i < (int)state.size(); ++i) {
+      assert(!present[state[i]]);
+      present[state[i]] = true;
+      assert(state[i] >= 0);
+      assert(state[i] < n);
+      c[i] = state[i];
+    }
+  }
+
+  /**
    * Visit the next combination.
    *
    * @param out's dereference is set to the element that is removed.
@@ -90,6 +107,7 @@ class combinations {
    * visited.
    */
   bool step(int* out, int* in) {
+    int j;
     if (t & 1) {
       if (c[0] + 1 < c[1]) {
         *out = c[0];
@@ -136,7 +154,7 @@ R2:
  */
 class combinations_with_replacement {
   std::vector<int> c;
-  int t, j;
+  int t, n;
 
  public:
   /**
@@ -152,10 +170,11 @@ class combinations_with_replacement {
     n += t - 1;
     assert(n > t);
     assert(t > 1);
-    for (j = 0; j < t; ++j) {
+    for (int j = 0; j < t; ++j) {
       c[j] = 0;
     }
-    c[t] = n - j;
+    c[t] = n - t;
+    this->n = n;
   }
 
   /**
@@ -173,6 +192,20 @@ class combinations_with_replacement {
   }
 
   /**
+   * Set the current combination state.
+   *
+   * @param state is a combination state.
+   */
+  void set_state(const std::vector<int>& state) {
+    assert((int)state.size() == t);
+    for (int i = 0; i < (int)state.size(); ++i) {
+      assert(state[i] >= 0);
+      assert(state[i] < n - t + 1);
+      c[i] = state[i];
+    }
+  }
+
+  /**
    * Visit the next combination. In cases where there is only a single item
    * swapped out, *out1 == *in1.
    *
@@ -185,6 +218,7 @@ class combinations_with_replacement {
    */
   bool step(int* out1, int* in1, int* out2, int* in2) {
     *out1 = *in1 = *out2 = *in2 = c[0];
+    int j;
     if (t & 1) {
       if (c[0] < c[1]) {
         *out2 = c[0];
