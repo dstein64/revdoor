@@ -1,6 +1,7 @@
 all:
 	$(CXX) \
 		-Wall -Wextra -Wpedantic -Werror \
+		-fsanitize=address -fsanitize=undefined \
 		-I.. \
 		test_revdoor.cpp \
 		-o test_revdoor \
