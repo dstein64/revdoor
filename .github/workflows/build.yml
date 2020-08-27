@@ -1,5 +1,4 @@
 name: build
-
 on:
   push:
     branches: [ master ]
@@ -11,7 +10,6 @@ on:
 
 jobs:
   build:
-
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
@@ -23,16 +21,21 @@ jobs:
             compiler: g++
 
     steps:
-    - uses: actions/checkout@v2
+    - name: Checkout
+      uses: actions/checkout@v2
+
     - name: Install Dependencies (ubuntu)
       if: matrix.os == 'ubuntu-latest'
       run: sudo apt install libboost-test-dev
+
     - name: Install Dependencies (macos)
       if: matrix.os == 'macos-latest'
       run: brew install boost
+
     - name: Compile (${{ matrix.compiler }})
       env:
         CXX: ${{ matrix.compiler }}
       run: make --directory tests
+
     - name: Test
       run: tests/test_revdoor
