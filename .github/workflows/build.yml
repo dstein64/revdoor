@@ -45,7 +45,7 @@ jobs:
       if: matrix.os == 'macos-latest'
       run: |
         brew install boost
-        find / | grep unit_test.hpp
+        echo "CPLUS_INCLUDE_PATH=/opt/homebrew/Cellar/boost/1.84.0_1/include:${CPLUS_INCLUDE_PATH}" >> "${GITHUB_ENV}"
 
     - name: Compile (${{ matrix.compiler }})
       env:
