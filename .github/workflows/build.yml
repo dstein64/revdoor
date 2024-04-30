@@ -46,6 +46,7 @@ jobs:
       run: |
         brew install boost
         echo "CPLUS_INCLUDE_PATH=/opt/homebrew/Cellar/boost/1.84.0_1/include:${CPLUS_INCLUDE_PATH}" >> "${GITHUB_ENV}"
+        find / | grep boost_unit_test_framework
 
     - name: Compile (${{ matrix.compiler }})
       env:
