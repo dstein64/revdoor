@@ -45,8 +45,10 @@ jobs:
       if: matrix.os == 'macos-latest'
       run: |
         brew install boost
-        echo "CPLUS_INCLUDE_PATH=/opt/homebrew/Cellar/boost/1.84.0_1/include:${CPLUS_INCLUDE_PATH}" >> "${GITHUB_ENV}"
-        echo "LIBRARY_PATH=/opt/homebrew/Cellar/boost/1.84.0_1/lib:${LIBRARY_PATH}" >> "${GITHUB_ENV}"
+        # XXX: There should only be one path.
+        BOOST_PATHS=(/opt/homebrew/Cellar/boost/*)
+        echo "CPLUS_INCLUDE_PATH=${BOOST_PATHS[0]}/include:${CPLUS_INCLUDE_PATH}" >> "${GITHUB_ENV}"
+        echo "LIBRARY_PATH=${BOOST_PATHS[0]}/lib:${LIBRARY_PATH}" >> "${GITHUB_ENV}"
 
     - name: Compile (${{ matrix.compiler }})
       env:
