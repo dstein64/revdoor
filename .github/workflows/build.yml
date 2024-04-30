@@ -43,7 +43,9 @@ jobs:
 
     - name: Install Dependencies (macos)
       if: matrix.os == 'macos-latest'
-      run: brew install boost
+      run: |
+        brew install boost
+        find / | grep unit_test.hpp
 
     - name: Compile (${{ matrix.compiler }})
       env:
