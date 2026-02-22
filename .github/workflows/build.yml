@@ -39,7 +39,9 @@ jobs:
 
     - name: Install Dependencies (ubuntu)
       if: matrix.os == 'ubuntu-latest'
-      run: sudo apt install libboost-test-dev
+      run: |
+        sudo apt-get update
+        sudo apt-get install libboost-test-dev
 
     - name: Install Dependencies (macos)
       if: matrix.os == 'macos-latest'
