@@ -90,10 +90,10 @@ class combinations {
     assert((int)state.size() == t);
     std::vector<bool> present(n, false);
     for (int i = 0; i < (int)state.size(); ++i) {
-      assert(!present[state[i]]);
-      present[state[i]] = true;
       assert(state[i] >= 0);
       assert(state[i] < n);
+      assert(!present[state[i]]);
+      present[state[i]] = true;
       c[i] = state[i];
     }
   }
