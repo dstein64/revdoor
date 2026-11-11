@@ -88,7 +88,7 @@ class combinations {
    */
   void set_state(const std::vector<int>& state) {
     assert((int)state.size() == t);
-    std::vector<bool> present(t, false);
+    std::vector<bool> present(n, false);
     for (int i = 0; i < (int)state.size(); ++i) {
       assert(!present[state[i]]);
       present[state[i]] = true;
