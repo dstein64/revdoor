@@ -199,6 +199,7 @@ class combinations_with_replacement {
     for (int i = 0; i < (int)state.size(); ++i) {
       assert(state[i] >= 0);
       assert(state[i] < n - t + 1);
+      assert(i == 0 || state[i - 1] <= state[i]);
       c[i] = state[i];
     }
   }
