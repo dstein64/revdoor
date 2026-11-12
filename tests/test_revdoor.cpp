@@ -55,7 +55,7 @@ BOOST_AUTO_TEST_CASE(test_combinations) {
       BOOST_CHECK_EQUAL(swaps[j].first, expected_swaps[i + j].first);
       BOOST_CHECK_EQUAL(swaps[j].second, expected_swaps[i + j].second);
     }
-    end_state = states[states.size() - 1];
+    end_state = combs.state();
     BOOST_CHECK_EQUAL_COLLECTIONS(
         end_state.begin(),
         end_state.end(),
@@ -149,7 +149,7 @@ BOOST_AUTO_TEST_CASE(test_combinations_with_replacement) {
           expected_swaps[i + j].begin(),
           expected_swaps[i + j].end());
     }
-    end_state = states[states.size() - 1];
+    end_state = combs.state();
     BOOST_CHECK_EQUAL_COLLECTIONS(
         end_state.begin(),
         end_state.end(),
