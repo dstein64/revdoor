@@ -1,7 +1,7 @@
 /**
  * @file
  * @author  Daniel Steinberg - https://www.dannyadam.com
- * @version 1.0.3
+ * @version 1.0.4
  *
  * @section LICENSE
  *
