@@ -164,6 +164,20 @@ BOOST_AUTO_TEST_CASE(test_combinations_set_state_large_n) {
       state.end());
 }
 
+BOOST_AUTO_TEST_CASE(test_combinations_with_replacement_set_state_large_n) {
+  int n = 100;
+  int t = 2;
+  revdoor::combinations_with_replacement combs(n, t);
+  vector<int> state = {0, n - 1};
+  combs.set_state(state);
+  vector<int> result = combs.state();
+  BOOST_CHECK_EQUAL_COLLECTIONS(
+      result.begin(),
+      result.end(),
+      state.begin(),
+      state.end());
+}
+
 BOOST_AUTO_TEST_CASE(test_combinations_with_replacement) {
   int n = 5;
   int t = 3;
