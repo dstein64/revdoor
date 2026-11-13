@@ -2,6 +2,8 @@
 #define BOOST_TEST_MAIN
 #include <boost/test/unit_test.hpp>
 
+#include <algorithm>
+#include <set>
 #include <utility>
 #include <vector>
 
@@ -61,6 +63,90 @@ BOOST_AUTO_TEST_CASE(test_combinations) {
         end_state.end(),
         expected_end_state.begin(),
         expected_end_state.end());
+  }
+}
+
+// Multiply the k numbers counting down from n, and divide by 1, 2, ..., k.
+static long choose(int n, int k) {
+  long result = 1;
+  for (int i = 0; i < k; ++i) {
+    result = result * (n - i) / (i + 1);
+  }
+  return result;
+}
+
+// Run the generator for many sizes, with odd and even t, and check that
+// every combination appears exactly once.
+BOOST_AUTO_TEST_CASE(test_combinations_exhaustive) {
+  for (int n = 3; n <= 8; ++n) {
+    for (int t = 2; t <= 5 && t < n; ++t) {
+      revdoor::combinations combs(n, t);
+      set<vector<int>> seen;
+      vector<int> prev = combs.state();
+      seen.insert(prev);
+      int out, in;
+      while (combs.step(&out, &in)) {
+        vector<int> curr = combs.state();
+        // Sorted, no repeated numbers, and only numbers 0 to n-1.
+        BOOST_CHECK(is_sorted(curr.begin(), curr.end()));
+        BOOST_CHECK(adjacent_find(curr.begin(), curr.end()) == curr.end());
+        BOOST_CHECK(curr.front() >= 0 && curr.back() < n);
+        // Removing out and adding in gives the new combination.
+        multiset<int> expected(prev.begin(), prev.end());
+        BOOST_REQUIRE(expected.count(out) == 1);
+        BOOST_CHECK(expected.count(in) == 0);
+        expected.erase(expected.find(out));
+        expected.insert(in);
+        BOOST_CHECK(expected == multiset<int>(curr.begin(), curr.end()));
+        // No combination comes up twice.
+        BOOST_CHECK_MESSAGE(
+            seen.insert(curr).second,
+            "duplicate combination for n=" << n << " t=" << t);
+        prev = curr;
+      }
+      // Right number of combinations: C(n, t).
+      BOOST_CHECK_MESSAGE(
+          (long)seen.size() == choose(n, t),
+          "wrong count for n=" << n << " t=" << t);
+    }
+  }
+}
+
+// Run the generator for many sizes, with odd and even t, and check that
+// every combination appears exactly once.
+BOOST_AUTO_TEST_CASE(test_combinations_with_replacement_exhaustive) {
+  for (int n = 2; n <= 8; ++n) {
+    for (int t = 2; t <= 5; ++t) {
+      revdoor::combinations_with_replacement combs(n, t);
+      set<vector<int>> seen;
+      vector<int> prev = combs.state();
+      seen.insert(prev);
+      int out1, in1, out2, in2;
+      while (combs.step(&out1, &in1, &out2, &in2)) {
+        vector<int> curr = combs.state();
+        // Sorted, and only numbers 0 to n-1.
+        BOOST_CHECK(is_sorted(curr.begin(), curr.end()));
+        BOOST_CHECK(curr.front() >= 0 && curr.back() < n);
+        // Removing the outs and adding the ins gives the new combination.
+        multiset<int> expected(prev.begin(), prev.end());
+        BOOST_REQUIRE(expected.count(out1) > 0);
+        expected.erase(expected.find(out1));
+        expected.insert(in1);
+        BOOST_REQUIRE(expected.count(out2) > 0);
+        expected.erase(expected.find(out2));
+        expected.insert(in2);
+        BOOST_CHECK(expected == multiset<int>(curr.begin(), curr.end()));
+        // No combination comes up twice.
+        BOOST_CHECK_MESSAGE(
+            seen.insert(curr).second,
+            "duplicate combination for n=" << n << " t=" << t);
+        prev = curr;
+      }
+      // Right number of combinations: C(n+t-1, t).
+      BOOST_CHECK_MESSAGE(
+          (long)seen.size() == choose(n + t - 1, t),
+          "wrong count for n=" << n << " t=" << t);
+    }
   }
 }
 
